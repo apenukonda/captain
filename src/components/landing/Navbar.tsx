@@ -1,23 +1,23 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { CiMenuFries } from 'react-icons/ci';
-import { GiMagicAxe } from 'react-icons/gi';
-import Logo from '@/assets/Resources/logo.svg';
-import User from '@/assets/Resources/User.svg';
-import Image from 'next/image';
-import { getSession, signOut } from 'next-auth/react';
-import type { CustomUser } from '@/types';
-import { Loader2Icon } from 'lucide-react';
-import Link from 'next/link';
-import Notification from './Notification';
+"use client";
+import { useState, useEffect } from "react";
+import { CiMenuFries } from "react-icons/ci";
+import { GiMagicAxe } from "react-icons/gi";
+import Logo from "@/assets/Resources/logo.svg";
+import User from "@/assets/Resources/User.svg";
+import Image from "next/image";
+import { getSession, signOut } from "next-auth/react";
+import type { CustomUser } from "@/types";
+import { Loader2Icon } from "lucide-react";
+import Link from "next/link";
+import Notification from "./Notification";
 
 interface NavbarProps {
   bgColor?: string;
 }
 
-export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
+export default function Navbar({ bgColor = "#110219" }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState<string>('');
+  const [activeLink, setActiveLink] = useState<string>("");
   const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -68,45 +68,56 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
             <Link
               href="/events"
               className={`text-md ${
-                activeLink === 'events'
-                  ? 'text-fuchsia-600'
-                  : 'hover:text-fuchsia-600'
+                activeLink === "events"
+                  ? "text-fuchsia-600"
+                  : "hover:text-fuchsia-600"
               }`}
-              onClick={() => handleLinkClick('events')}
+              onClick={() => handleLinkClick("events")}
             >
               Events
             </Link>
             <Link
               href="gamePass"
               className={`text-md ${
-                activeLink === 'gamePass'
-                  ? 'text-fuchsia-600'
-                  : 'hover:text-fuchsia-600'
+                activeLink === "gamePass"
+                  ? "text-fuchsia-600"
+                  : "hover:text-fuchsia-600"
               }`}
-              onClick={() => handleLinkClick('gamePass')}
+              onClick={() => handleLinkClick("gamePass")}
             >
               Game Pass
             </Link>
             <Link
               href="/aboutus"
               className={`text-md ${
-                activeLink === 'aboutUs'
-                  ? 'text-fuchsia-600'
-                  : 'hover:text-fuchsia-600'
+                activeLink === "aboutUs"
+                  ? "text-fuchsia-600"
+                  : "hover:text-fuchsia-600"
               }`}
-              onClick={() => handleLinkClick('aboutUs')}
+              onClick={() => handleLinkClick("aboutUs")}
             >
               About Us
+            </Link>
+            <Link
+              href="/marketplace"
+              className={`text-md ${
+                activeLink === "marketplace"
+                  ? "text-fuchsia-600"
+                  : "hover:text-fuchsia-600"
+              }`}
+              onClick={() => handleLinkClick("marketplace")}
+            >
+              Marketplace
             </Link>
             {session && (
               <Link
                 href={`/user/${encodeURI(session.user.name)}`}
                 className={`text-md ${
-                  activeLink === 'aboutUs'
-                    ? 'text-fuchsia-600'
-                    : 'hover:text-fuchsia-600'
+                  activeLink === "aboutUs"
+                    ? "text-fuchsia-600"
+                    : "hover:text-fuchsia-600"
                 }`}
-                onClick={() => handleLinkClick('user/${userid}')}
+                onClick={() => handleLinkClick("user/${userid}")}
               >
                 My Account
               </Link>
@@ -143,7 +154,7 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
                     href="/login"
                     prefetch={false}
                     className=" relative text-white px-3.5 py-0.5 text-base font-semibold overflow-hidden"
-                    onClick={() => handleLinkClick('login')}
+                    onClick={() => handleLinkClick("login")}
                   >
                     <div className="pentagon bg-[#d600e1] absolute inset-0"></div>
                     <span className="relative text-black z-10 text-center">
@@ -174,27 +185,27 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
             <Link
               href="/events"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
-                activeLink === 'events' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                activeLink === "events" ? "bg-gray-700" : "hover:bg-gray-700"
               }`}
-              onClick={() => handleLinkClick('events')}
+              onClick={() => handleLinkClick("events")}
             >
               Events
             </Link>
             <Link
               href="/gamePass"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
-                activeLink === 'gamePass' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                activeLink === "gamePass" ? "bg-gray-700" : "hover:bg-gray-700"
               }`}
-              onClick={() => handleLinkClick('gamePass')}
+              onClick={() => handleLinkClick("gamePass")}
             >
               Game Pass
             </Link>
             <Link
               href="/aboutus"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
-                activeLink === 'aboutUs' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                activeLink === "aboutUs" ? "bg-gray-700" : "hover:bg-gray-700"
               }`}
-              onClick={() => handleLinkClick('aboutUs')}
+              onClick={() => handleLinkClick("aboutUs")}
             >
               About Us
             </Link>
@@ -202,9 +213,9 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               <Link
                 href={`/user/${encodeURI(session.user.name)}`}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  activeLink === 'aboutUs' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                  activeLink === "aboutUs" ? "bg-gray-700" : "hover:bg-gray-700"
                 }`}
-                onClick={() => handleLinkClick('user/${userid}')}
+                onClick={() => handleLinkClick("user/${userid}")}
               >
                 My Account
               </Link>
@@ -235,9 +246,9 @@ export default function Navbar({ bgColor = '#110219' }: NavbarProps) {
               <Link
                 href="/login"
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  activeLink === 'login' ? 'bg-gray-700' : 'hover:bg-gray-700'
+                  activeLink === "login" ? "bg-gray-700" : "hover:bg-gray-700"
                 }`}
-                onClick={() => handleLinkClick('login')}
+                onClick={() => handleLinkClick("login")}
               >
                 Login
               </Link>
